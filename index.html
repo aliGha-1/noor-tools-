@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071827">
+<title>NOOR TOOLS 2027</title>
+
+<style>
+:root {
+  --navy: #071827;
+  --navy2: #102a3b;
+  --green: #20c982;
+  --silver: #d7e1e7;
+  --text: #f4f8fa;
+  --muted: #a9bac5;
+  --card: #102536;
+  --border: #274253;
+  --red: #ff6575;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--navy);
+  color: var(--text);
+  font-family: Tahoma, Arial, sans-serif;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* شاشة البداية */
+
+#splash {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: #f4f6f7;
+  color: var(--navy);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  text-align: center;
+}
+
+.logo {
+  width: 92px;
+  height: 92px;
+  border-radius: 24px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(145deg, #153d42, #071827);
+  border: 2px solid #29d38c;
+  box-shadow: 0 8px 30px #07182730;
+  color: #45e3a0;
+  font-size: 62px;
+  font-weight: 900;
+  animation: logoIn 1.2s ease both;
+}
+
+@keyframes logoIn {
+  from {
+    opacity: 0;
+    transform: scale(.65) rotate(-12deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0);
+  }
+}
+
+#splash h1 {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: 1px;
+}
+
+#splash h1 span {
+  color: #169c67;
+}
+
+#splash p {
+  color: #526572;
+  margin: 0;
+}
+
+.credit {
+  position: absolute;
+  top: 16px;
+  right: 12px;
+  text-align: right;
+  font-size: 10px;
+  line-height: 1.8;
+  color: #526572;
+}
+
+.loader {
+  width: 110px;
+  height: 4px;
+  border-radius: 10px;
+  background: #dce5e8;
+  overflow: hidden;
+  margin-top: 24px;
+}
+
+.loader::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 40%;
+  background: #20c982;
+  animation: loading 1s infinite alternate;
+}
+
+@keyframes loading {
+  from { transform: translateX(160%); }
+  to { transform: translateX(-160%); }
+}
+
+/* شاشة الدخول */
+
+.screen {
+  min-height: 100vh;
+  padding: 22px 15px;
+}
+
+#loginScreen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 400px;
+  padding: 28px 22px;
+  text-align: center;
+  border-radius: 24px;
+  background: var(--card);
+  border: 1px solid var(--border);
+}
+
+.small-logo {
+  width: 65px;
+  height: 65px;
+  margin: 0 auto 15px;
+  border-radius: 18px;
+  background: #183d40;
+  color: var(--green);
+  display: grid;
+  place-items: center;
+  font-size: 43px;
+  font-weight: bold;
+}
+
+.login-box h2 {
+  margin-bottom: 8px;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.field {
+  width: 100%;
+  padding: 13px;
+  border-radius: 11px;
+  border: 1px solid var(--border);
+  background: #071827;
+  color: white;
+  margin-top: 9px;
+  outline: none;
+}
+
+.field:focus {
+  border-color: var(--green);
+}
+
+.btn {
+  border: 0;
+  border-radius: 11px;
+  padding: 12px 16px;
+  background: var(--green);
+  color: #06251a;
+  font-weight: bold;
+}
+
+.btn:active {
+  transform: scale(.98);
+}
+
+.btn-block {
+  width: 100%;
+  margin-top: 13px;
+}
+
+.btn-secondary {
+  background: #243d4d;
+  color: white;
+}
+
+.btn-danger {
+  background: #542632;
+  color: #ffdce0;
+}
+
+.error {
+  color: var(--red);
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+/* الواجهة الرئيسية */
+
+header {
+  background: #0c2030;
+  border-bottom: 1px solid var(--border);
+  padding: 14px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-logo {
+  width: 43px;
+  height: 43px;
+  flex-shrink: 0;
+  border-radius: 13px;
+  background: #183d40;
+  color: var(--green);
+  display: grid;
+  place-items: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+header h1 {
+  font-size: 17px;
+  margin: 0;
+}
+
+header p {
+  font-size: 11px;
+  color: var(--muted);
+  margin: 4px 0 0;
+}
+
+main {
+  max-width: 1000px;
+  margin: auto;
+  padding: 18px 14px 40px;
+}
+
+.welcome {
+  padding: 20px;
+  border-radius: 18px;
+  background: linear-gradient(130deg, #173d40, #102536 75%);
+  border: 1px solid #28534e;
+  margin-bottom: 18px;
+}
+
+.welcome h2 {
+  margin: 0 0 8px;
+}
+
+.welcome p {
+  color: #c3d8d7;
+  font-size: 13px;
+  margin-bottom: 0;
+}
+
+.section-title {
+  font-size: 17px;
+  margin: 23px 0 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 11px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 16px 12px;
+}
+
+button.card {
+  color: white;
+  text-align: right;
+  width: 100%;
+}
+
+.card:active {
+  border-color: var(--green);
+}
+
+.card .icon {
+  font-size: 28px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.card strong {
+  display: block;
+  font-size: 14px;
+}
+
+.card small {
+  display: block;
+  color: var(--muted);
+  margin-top: 7px;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.stat {
+  font-size: 23px;
+  font-weight: bold;
+  color: var(--green);
+  margin-top: 10px;
+}
+
+/* صفحات الأدوات */
+
+.page {
+  display: none;
+}
+
+.page.active {
+  display: block;
+}
+
+.page-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.page-heading h2 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.form-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 12px;
+}
+
+label .field {
+  margin-top: 7px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-top: 14px;
+}
+
+table {
+  width: 100%;
+  min-width: 540px;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+th, td {
+  padding: 11px 9px;
+  text-align: right;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+th {
+  background: #183344;
+  color: #b9f7dc;
+}
+
+td input {
+  width: 85px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  background: var(--navy);
+  color: white;
+}
+
+.total-box {
+  padding: 16px;
+  margin-top: 14px;
+  border-radius: 12px;
+  background: #123d35;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.total-box strong {
+  color: #55edac;
+  font-size: 20px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 15px;
+}
+
+.actions .btn {
+  flex: 1;
+}
+
+.notice {
+  background: #162f40;
+  color: #c9d8df;
+  border-radius: 10px;
+  padding: 12px;
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.empty {
+  text-align: center;
+  color: var(--muted);
+  padding: 25px 10px;
+}
+
+.back-btn {
+  margin-bottom: 18px;
+}
+
+@media (min-width: 650px) {
+  .grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  header, .no-print, #splash, #loginScreen {
+    display: none !important;
+  }
+
+  .screen, main, .form-card {
+    padding: 0;
+    background: white;
+    color: black;
+    border: 0;
+  }
+
+  .page {
+    display: none !important;
+  }
+
+  #app {
+    display: block !important;
+  }
+
+  #invoicePage.active {
+    display: block !important;
+  }
+
+  table {
+    min-width: 0;
+  }
+
+  th, td {
+    color: black;
+    border: 1px solid #ccc;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- شاشة البداية -->
+<div id="splash">
+  <div class="credit">
+    تصميم وتطوير: م. علي غريب<br>
+    Design &amp; Development<br>
+    01559330658
+  </div>
+
+  <div class="logo">N</div>
+  <h1>NOOR <span>TOOLS</span></h1>
+  <h2 style="margin:0;color:#159b66">2027</h2>
+  <p>أدواتك في مكان واحد</p>
+  <div class="loader"></div>
+</div>
+
+<!-- شاشة الدخول -->
+<section id="loginScreen" class="screen hidden">
+  <div class="login-box">
+    <div class="small-logo">N</div>
+    <h2>مرحبًا بك في نور تولز</h2>
+    <p class="muted">NOOR TOOLS 2027</p>
+
+    <form id="loginForm">
+      <input
+        id="passwordInput"
+        class="field"
+        type="password"
+        placeholder="أدخل كلمة المرور"
+        autocomplete="current-password"
+        required
+      >
+
+      <button type="submit" class="btn btn-block">
+        دخول إلى التطبيق
+      </button>
+    </form>
+
+    <div id="loginError" class="error"></div>
+    <p class="muted">أدواتك في مكان واحد 💚</p>
+  </div>
+</section>
+
+<!-- التطبيق -->
+<div id="app" class="hidden">
+
+<header>
+  <div class="header-logo">N</div>
+  <div>
+    <h1>NOOR TOOLS 2027</h1>
+    <p>أدواتك في مكان واحد</p>
+  </div>
+</header>
+
+<main>
+
+<!-- الرئيسية -->
+<section id="homePage" class="page active">
+
+  <div class="welcome">
+    <h2>أهلًا بك في نور تولز 💚</h2>
+    <p>إدارة الأصناف والفواتير والمبيعات والمشتريات من مكان واحد.</p>
+  </div>
+
+  <h3 class="section-title">لوحة التحكم</h3>
+
+  <div class="grid">
+    <div class="card">
+      <span class="icon">📦</span>
+      <strong>عدد الأصناف</strong>
+      <div class="stat" id="productCount">0</div>
+    </div>
+
+    <div class="card">
+      <span class="icon">🧾</span>
+      <strong>عدد الفواتير</strong>
+      <div class="stat" id="invoiceCount">0</div>
+    </div>
+
+    <div class="card">
+      <span class="icon">💰</span>
+      <strong>إجمالي المبيعات</strong>
+      <div class="stat" id="salesTotal">0 ج.م</div>
+    </div>
+  </div>
+
+  <h3 class="section-title">الأقسام الرئيسية</h3>
+
+  <div class="grid">
+    <button class="card" onclick="openPage('invoicePage','sale')">
+      <span class="icon">🛒</span>
+      <strong>فاتورة مبيعات</strong>
+      <small>أضف أصنافًا متعددة في نفس الفاتورة.</small>
+    </button>
+
+    <button class="card" onclick="openPage('invoicePage','purchase')">
+      <span class="icon">📥</span>
+      <strong>فاتورة مشتريات</strong>
+      <small>سجل المشتريات وأضف أصنافك بسهولة.</small>
+    </button>
+
+    <button class="card" onclick="openPage('productsPage')">
+      <span class="icon">📦</span>
+      <strong>إدارة الأصناف</strong>
+      <small>إضافة الأصناف وتعديلها والبحث عنها.</small>
+    </button>
+
+    <button class="card" onclick="openPage('historyPage')">
+      <span class="icon">📋</span>
+      <strong>سجل الفواتير</strong>
+      <small>عرض الفواتير المحفوظة.</small>
+    </button>
+
+    <button class="card" onclick="openPage('backupPage')">
+      <span class="icon">💾</span>
+      <strong>النسخ الاحتياطي</strong>
+      <small>تصدير بياناتك واستعادتها.</small>
+    </button>
+  </div>
+</section>
+
+<!-- صفحة الفاتورة -->
+<section id="invoicePage" class="page">
+
+  <button class="btn btn-secondary back-btn no-print"
+          onclick="openPage('homePage')">
+    ← الرئيسية
+  </button>
+
+  <div class="page-heading">
+    <h2 id="invoiceTitle">فاتورة مبيعات</h2>
+  </div>
+
+  <div class="form-card">
+    <label>
+      اسم العميل أو المورد
+      <input id="partyName" class="field"
+             placeholder="اكتب الاسم">
+    </label>
+
+    <label>
+      ملاحظات الفاتورة
+      <input id="invoiceNotes" class="field"
+             placeholder="ملاحظات اختيارية">
+    </label>
+  </div>
+
+  <div class="form-card">
+
+    <h3 style="margin-top:0">إضافة صنف للفاتورة</h3>
+
+    <label>
+      اختر صنفًا مسجلًا أو اكتب اسم صنف جديد
+      <input id="itemName" class="field"
+             list="productSuggestions"
+             placeholder="اسم الصنف">
+      <datalist id="productSuggestions"></datalist>
+    </label>
+
+    <div class="form-row">
+      <label>
+        الكمية
+        <input id="itemQty" class="field"
+               type="number" min="0.001" step="any" value="1">
+      </label>
+
+      <label>
+        سعر الوحدة بالجنيه
+        <input id="itemPrice" class="field"
+               type="number" min="0" step="any" value="0">
+      </label>
+    </div>
+
+    <div class="actions">
+      <button class="btn" onclick="addInvoiceItem()">
+        + إضافة الصنف للفاتورة
+      </button>
+    </div>
+
+    <p class="muted">
+      تقدر تضيف صنفًا بعد صنف، وتفضل الفاتورة مفتوحة حتى تنتهي.
+    </p>
+  </div>
+
+  <div class="form-card">
+    <h3 style="margin-top:0">أصناف الفاتورة</h3>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>الصنف</th>
+            <th>الكمية</th>
+            <th>سعر الوحدة</th>
+            <th>الإجمالي</th>
+            <th class="no-print">حذف</th>
+          </tr>
+        </thead>
+        <tbody id="invoiceItems"></tbody>
+      </table>
+    </div>
+
+    <div id="invoiceEmpty" class="empty">
+      لم تتم إضافة أصناف بعد.
+    </div>
+
+    <div class="total-box">
+      <span>إجمالي الفاتورة</span>
+      <strong id="invoiceTotal">0.00 ج.م</strong>
+    </div>
+
+    <div class="actions no-print">
+      <button class="btn" onclick="saveInvoice()">
+        حفظ الفاتورة
+      </button>
+
+      <button class="btn btn-secondary" onclick="printInvoice()">
+        طباعة
+      </button>
+
+      <button class="btn btn-danger" onclick="clearInvoice()">
+        فاتورة جديدة
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- إدارة الأصناف -->
+<section id="productsPage" class="page">
+
+  <button class="btn btn-secondary back-btn"
+          onclick="openPage('homePage')">
+    ← الرئيسية
+  </button>
+
+  <h2>إدارة الأصناف</h2>
+
+  <div class="form-card">
+    <h3>إضافة صنف جديد</h3>
+
+    <label>
+      اسم الصنف
+      <input id="newProductName" class="field"
+             placeholder="مثال: مفتاح إنجليزي">
+    </label>
+
+    <div class="form-row">
+      <label>
+        سعر البيع
+        <input id="newProductSale" class="field"
+               type="number" min="0" step="any" value="0">
+      </label>
+
+      <label>
+        سعر الشراء
+        <input id="newProductPurchase" class="field"
+               type="number" min="0" step="any" value="0">
+      </label>
+    </div>
+
+    <label>
+      الكمية الافتتاحية
+      <input id="newProductStock" class="field"
+             type="number" min="0" step="any" value="0">
+    </label>
+
+    <button class="btn btn-block" onclick="addProduct()">
+      حفظ الصنف
+    </button>
+  </div>
+
+  <div class="form-card">
+    <h3>الأصناف المسجلة</h3>
+
+    <input id="productSearch" class="field"
+           placeholder="ابحث عن صنف..."
+           oninput="renderProducts()">
+
+    <div id="productsList"></div>
+  </div>
+</section>
+
+<!-- سجل الفواتير -->
+<section id="historyPage" class="page">
+
+  <button class="btn btn-secondary back-btn"
+          onclick="openPage('homePage')">
+    ← الرئيسية
+  </button>
+
+  <h2>سجل الفواتير</h2>
+  <div id="historyList"></div>
+</section>
+
+<!-- النسخ الاحتياطي -->
+<section id="backupPage" class="page">
+
+  <button class="btn btn-secondary back-btn"
+          onclick="openPage('homePage')">
+    ← الرئيسية
+  </button>
+
+  <h2>النسخ الاحتياطي</h2>
+
+  <div class="form-card">
+    <p>احتفظ بنسخة من الأصناف والفواتير لاستعادتها عند الحاجة.</p>
+
+    <button class="btn btn-block" onclick="exportData()">
+      تصدير نسخة احتياطية
+    </button>
+
+    <label>
+      استعادة نسخة JSON
+      <input id="backupFile" class="field" type="file" accept=".json">
+    </label>
+
+    <button class="btn btn-secondary btn-block"
+            onclick="importData()">
+      استعادة البيانات
+    </button>
+
+    <p class="muted">
+      احتفظ بالنسخة في مكان آمن. بيانات هذا الإصدار محفوظة محليًا
+      على الجهاز والمتصفح المستخدم.
+    </p>
+  </div>
+</section>
+
+</main>
+</div>
+
+<script>
+"use strict";
+
+/*
+  إصدار أولي للتجربة.
+  كلمة المرور الافتراضية: 1234
+  هذا ليس نظام مصادقة آمنًا للاستخدام التجاري.
+*/
+
+const DEFAULT_PASSWORD = "1234";
+
+let products = readStore("noor_products", []);
+let invoices = readStore("noor_invoices", []);
+let currentItems = [];
+let invoiceType = "sale";
+let editInvoiceId = null;
+
+function readStore(key, fallback) {
+  try {
+    const value = JSON.parse(localStorage.getItem(key));
+    return value === null ? fallback : value;
+  } catch {
+    return fallback;
+  }
+}
+
+function saveStore() {
+  localStorage.setItem("noor_products", JSON.stringify(products));
+  localStorage.setItem("noor_invoices", JSON.stringify(invoices));
+}
+
+function money(value) {
+  return (Number(value) || 0).toLocaleString("ar-EG", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2
+  }) + " ج.م";
+}
+
+function safeText(value) {
+  return String(value ?? "").replace(/[&<>"']/g, char => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  })[char]);
+}
+
+function newId() {
+  return Date.now().toString(36) +
+    Math.random().toString(36).slice(2, 9);
+}
+
+/* شاشة البداية */
+setTimeout(() => {
+  document.getElementById("splash").classList.add("hidden");
+  document.getElementById("loginScreen").classList.remove("hidden");
+}, 3000);
+
+/* تسجيل الدخول */
+document.getElementById("loginForm").addEventListener("submit", event => {
+  event.preventDefault();
+
+  const input = document.getElementById("passwordInput").value;
+
+  if (input !== DEFAULT_PASSWORD) {
+    document.getElementById("loginError").textContent =
+      "كلمة المرور غير صحيحة.";
+    return;
+  }
+
+  document.getElementById("loginScreen").classList.add("hidden");
+  document.getElementById("app").classList.remove("hidden");
+  document.getElementById("loginError").textContent = "";
+
+  updateDashboard();
+});
+
+function openPage(pageId, type) {
+  document.querySelectorAll(".page").forEach(page => {
+    page.classList.remove("active");
+  });
+
+  document.getElementById(pageId).classList.add("active");
+
+  if (pageId === "invoicePage") {
+    invoiceType = type || "sale";
+    document.getElementById("invoiceTitle").textContent =
+      invoiceType === "sale" ? "فاتورة مبيعات" : "فاتورة مشتريات";
+
+    document.getElementById("itemPrice").value = "0";
+    refreshSuggestions();
+    renderInvoiceItems();
+  }
+
+  if (pageId === "productsPage") renderProducts();
+  if (pageId === "historyPage") renderHistory();
+  if (pageId === "homePage") updateDashboard();
+
+  window.scrollTo(0, 0);
+}
+
+/* اقتراح الأصناف */
+function refreshSuggestions() {
+  const list = document.getElementById("productSuggestions");
+
+  list.innerHTML = products.map(product =>
+    `<option value="${safeText(product.name)}"></option>`
+  ).join("");
+}
+
+document.getElementById("itemName").addEventListener("change", () => {
+  const name = document.getElementById("itemName").value.trim();
+  const product = products.find(p => p.name === name);
+
+  if (product) {
+    document.getElementById("itemPrice").value =
+      invoiceType === "sale" ? product.salePrice : product.purchasePrice;
+  }
+});
+
+/* إضافة صنف للفاتورة دون إغلاقها */
+function addInvoiceItem() {
+  const name = document.getElementById("itemName").value.trim();
+  const qty = Number(document.getElementById("itemQty").value);
+  const price = Number(document.getElementById("itemPrice").value);
+
+  if (!name) {
+    alert("اكتب اسم الصنف أولًا.");
+    return;
+  }
+
+  if (!Number.isFinite(qty) || qty <= 0) {
+    alert("أدخل كمية صحيحة.");
+    return;
+  }
+
+  if (!Number.isFinite(price) || price < 0) {
+    alert("أدخل سعرًا صحيحًا.");
+    return;
+  }
+
+  let product = products.find(p => p.name === name);
+
+  /*
+    لو الصنف جديد، يُسجل تلقائيًا في قائمة الأصناف،
+    وتظل الفاتورة مفتوحة.
+  */
+  if (!product) {
+    product = {
+      id: newId(),
+      name,
+      salePrice: invoiceType === "sale" ? price : 0,
+      purchasePrice: invoiceType === "purchase" ? price : 0,
+      stock: 0
+    };
+
+    products.push(product);
+    saveStore();
+    refreshSuggestions();
+  }
+
+  currentItems.push({
+    id: newId(),
+    productId: product.id,
+    name,
+    qty,
+    price
+  });
+
+  document.getElementById("itemName").value = "";
+  document.getElementById("itemQty").value = "1";
+  document.getElementById("itemPrice").value = "0";
+
+  renderInvoiceItems();
+
+  document.getElementById("itemName").focus();
+}
+
+/* عرض أصناف الفاتورة */
+function renderInvoiceItems() {
+  const tbody = document.getElementById("invoiceItems");
+  const empty = document.getElementById("invoiceEmpty");
+
+  empty.classList.toggle("hidden", currentItems.length > 0);
+
+  tbody.innerHTML = currentItems.map(item => `
+    <tr>
+      <td>${safeText(item.name)}</td>
+
+      <td>
+        <input type="number" min="0.001" step="any"
+          value="${item.qty}"
+          onchange="updateItem('${item.id}','qty',this.value)">
+      </td>
+
+      <td>
+        <input type="number" min="0" step="any"
+          value="${item.price}"
+          onchange="updateItem('${item.id}','price',this.value)">
+      </td>
+
+      <td>${money(item.qty * item.price)}</td>
+
+      <td class="no-print">
+        <button class="btn btn-danger"
+          onclick="removeItem('${item.id}')">حذف</button>
+      </td>
+    </tr>
+  `).join("");
+
+  const total = currentItems.reduce(
+    (sum, item) => sum + item.qty * item.price, 0
+  );
+
+  document.getElementById("invoiceTotal").textContent = money(total);
+}
+
+function updateItem(id, field, value) {
+  const item = currentItems.find(row => row.id === id);
+  if (!item) return;
+
+  const number = Number(value);
+
+  if (!Number.isFinite(number) ||
+      (field === "qty" && number <= 0) ||
+      (field === "price" && number < 0)) {
+    alert("القيمة غير صحيحة.");
+    renderInvoiceItems();
+    return;
+  }
+
+  item[field] = number;
+  renderInvoiceItems();
+}
+
+function removeItem(id) {
+  currentItems = currentItems.filter(item => item.id !== id);
+  renderInvoiceItems();
+}
+
+/* حفظ الفاتورة */
+function saveInvoice() {
+  if (currentItems.length === 0) {
+    alert("أضف صنفًا واحدًا على الأقل.");
+    return;
+  }
+
+  const total = currentItems.reduce(
+    (sum, item) => sum + item.qty * item.price, 0
+  );
+
+  const invoice = {
+    id: editInvoiceId || newId(),
+    number: editInvoiceId
+      ? (invoices.find(i => i.id === editInvoiceId)?.number || "")
+      : "NT-" + Date.now(),
+    type: invoiceType,
+    party: document.getElementById("partyName").value.trim(),
+    notes: document.getElementById("invoiceNotes").value.trim(),
+    date: new Date().toISOString(),
+    items: currentItems.map(item => ({...item})),
+    total
+  };
+
+  if (editInvoiceId) {
+    const index = invoices.findIndex(i => i.id === editInvoiceId);
+    if (index !== -1) invoices[index] = invoice;
+  } else {
+    invoices.push(invoice);
+  }
+
+  try {
+    saveStore();
+  } catch (error) {
+    alert("تعذر حفظ البيانات. قد تكون مساحة التخزين ممتلئة.");
+    return;
+  }
+
+  alert("تم حفظ الفاتورة بنجاح.");
+
+  currentItems = [];
+  editInvoiceId = null;
+
+  document.getElementById("partyName").value = "";
+  document.getElementById("invoiceNotes").value = "";
+
+  renderInvoiceItems();
+  updateDashboard();
+}
+
+function clearInvoice() {
+  if (currentItems.length &&
+      !confirm("هل تريد بدء فاتورة جديدة؟ الأصناف الحالية غير المحفوظة ستُمسح.")) {
+    return;
+  }
+
+  currentItems = [];
+  editInvoiceId = null;
+
+  document.getElementById("partyName").value = "";
+  document.getElementById("invoiceNotes").value = "";
+  document.getElementById("itemName").value = "";
+  document.getElementById("itemQty").value = "1";
+  document.getElementById("itemPrice").value = "0";
+
+  renderInvoiceItems();
+}
+
+function printInvoice() {
+  if (!currentItems.length) {
+    alert("أضف أصنافًا قبل الطباعة.");
+    return;
+  }
+
+  window.print();
+}
+
+/* إدارة الأصناف */
+function addProduct() {
+  const name = document.getElementById("newProductName").value.trim();
+  const salePrice = Number(document.getElementById("newProductSale").value);
+  const purchasePrice = Number(document.getElementById("newProductPurchase").value);
+  const stock = Number(document.getElementById("newProductStock").value);
+
+  if (!name) {
+    alert("اكتب اسم الصنف.");
+    return;
+  }
+
+  if (products.some(p => p.name.toLowerCase() === name.toLowerCase())) {
+    alert("هذا الصنف مسجل بالفعل.");
+    return;
+  }
+
+  if (![salePrice, purchasePrice, stock].every(Number.isFinite) ||
+      salePrice < 0 || purchasePrice < 0 || stock < 0) {
+    alert("راجع الأسعار والكميات.");
+    return;
+  }
+
+  products.push({
+    id: newId(),
+    name,
+    salePrice,
+    purchasePrice,
+    stock
+  });
+
+  saveStore();
+
+  document.getElementById("newProductName").value = "";
+  document.getElementById("newProductSale").value = "0";
+  document.getElementById("newProductPurchase").value = "0";
+  document.getElementById("newProductStock").value = "0";
+
+  refreshSuggestions();
+  renderProducts();
+  updateDashboard();
+
+  alert("تم حفظ الصنف.");
+}
+
+function renderProducts() {
+  const search = document.getElementById("productSearch").value
+    .trim().toLowerCase();
+
+  const filtered = products.filter(p =>
+    p.name.toLowerCase().includes(search)
+  );
+
+  const container = document.getElementById("productsList");
+
+  if (!filtered.length) {
+    container.innerHTML = '<div class="empty">لا توجد أصناف لعرضها.</div>';
+    return;
+  }
+
+  container.innerHTML = `
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>الصنف</th>
+            <th>سعر البيع</th>
+            <th>سعر الشراء</th>
+            <th>الكمية</th>
+            <th>حذف</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${filtered.map(p => `
+            <tr>
+              <td>${safeText(p.name)}</td>
+              <td>${money(p.salePrice)}</td>
+              <td>${money(p.purchasePrice)}</td>
+              <td>${p.stock}</td>
+              <td>
+                <button class="btn btn-danger"
+                  onclick="deleteProduct('${p.id}')">حذف</button>
+              </td>
+            </tr>
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function deleteProduct(id) {
+  const product = products.find(p => p.id === id);
+  if (!product) return;
+
+  if (!confirm("حذف الصنف من قائمة الأصناف؟ الفواتير المحفوظة لن تُحذف.")) {
+    return;
+  }
+
+  products = products.filter(p => p.id !== id);
+  saveStore();
+  refreshSuggestions();
+  renderProducts();
+  updateDashboard();
+}
+
+/* سجل الفواتير */
+function renderHistory() {
+  const container = document.getElementById("historyList");
+
+  if (!invoices.length) {
+    container.innerHTML = '<div class="empty">لا توجد فواتير محفوظة.</div>';
+    return;
+  }
+
+  container.innerHTML = [...invoices].reverse().map(invoice => `
+    <div class="form-card">
+      <strong>
+        ${invoice.type === "sale" ? "فاتورة مبيعات" : "فاتورة مشتريات"}
+      </strong>
+
+      <p class="muted">
+        رقم الفاتورة: ${safeText(invoice.number)}
+      </p>
+
+      <p class="muted">
+        ${safeText(invoice.party || "بدون اسم")}
+      </p>
+
+      <p>${new Date(invoice.date).toLocaleString("ar-EG")}</p>
+
+      <div class="total-box">
+        <span>الإجمالي</span>
+        <strong>${money(invoice.total)}</strong>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-secondary"
+          onclick="viewInvoice('${invoice.id}')">عرض</button>
+
+        <button class="btn btn-secondary"
+          onclick="editInvoice('${invoice.id}')">تعديل</button>
+
+        <button class="btn btn-danger"
+          onclick="deleteInvoice('${invoice.id}')">حذف</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function viewInvoice(id) {
+  const invoice = invoices.find(i => i.id === id);
+  if (!invoice) return;
+
+  invoiceType = invoice.type;
+  currentItems = invoice.items.map(item => ({...item}));
+
+  document.getElementById("invoiceTitle").textContent =
+    invoice.type === "sale" ? "فاتورة مبيعات" : "فاتورة مشتريات";
+
+  document.getElementById("partyName").value = invoice.party || "";
+  document.getElementById("invoiceNotes").value = invoice.notes || "";
+
+  editInvoiceId = null;
+
+  openPage("invoicePage", invoice.type);
+  renderInvoiceItems();
+}
+
+function editInvoice(id) {
+  const invoice = invoices.find(i => i.id === id);
+  if (!invoice) return;
+
+  invoiceType = invoice.type;
+  currentItems = invoice.items.map(item => ({...item}));
+  editInvoiceId = invoice.id;
+
+  document.getElementById("partyName").value = invoice.party || "";
+  document.getElementById("invoiceNotes").value = invoice.notes || "";
+
+  openPage("invoicePage", invoice.type);
+  renderInvoiceItems();
+}
+
+function deleteInvoice(id) {
+  if (!confirm("هل تريد حذف هذه الفاتورة؟")) return;
+
+  invoices = invoices.filter(invoice => invoice.id !== id);
+  saveStore();
+  renderHistory();
+  updateDashboard();
+}
+
+/* لوحة التحكم */
+function updateDashboard() {
+  document.getElementById("productCount").textContent = products.length;
+  document.getElementById("invoiceCount").textContent = invoices.length;
+
+  const sales = invoices
+    .filter(invoice => invoice.type === "sale")
+    .reduce((sum, invoice) => sum + Number(invoice.total || 0), 0);
+
+  document.getElementById("salesTotal").textContent = money(sales);
+}
+
+/* النسخ الاحتياطي */
+function exportData() {
+  const data = {
+    app: "NOOR TOOLS 2027",
+    version: 1,
+    exportedAt: new Date().toISOString(),
+    products,
+    invoices
+  };
+
+  const blob = new Blob(
+    [JSON.stringify(data, null, 2)],
+    {type: "application/json"}
+  );
+
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+
+  a.href = url;
+  a.download = "noor-tools-backup.json";
+  a.click();
+
+  URL.revokeObjectURL(url);
+}
+
+async function importData() {
+  const input = document.getElementById("backupFile");
+  const file = input.files[0];
+
+  if (!file) {
+    alert("اختر ملف النسخة الاحتياطية أولًا.");
+    return;
+  }
+
+  try {
+    const data = JSON.parse(await file.text());
+
+    if (!Array.isArray(data.products) ||
+        !Array.isArray(data.invoices)) {
+      throw new Error("Invalid backup");
+    }
+
+    if (!confirm("استعادة النسخة ستستبدل البيانات الحالية. هل تريد المتابعة؟")) {
+      return;
+    }
+
+    products = data.products;
+    invoices = data.invoices;
+
+    saveStore();
+    refreshSuggestions();
+    updateDashboard();
+
+    alert("تمت استعادة البيانات.");
+    input.value = "";
+  } catch {
+    alert("ملف النسخة الاحتياطية غير صالح.");
+  }
+}
+
+/* تهيئة أولية */
+refreshSuggestions();
+updateDashboard();
+</script>
+
+</body>
+</html>
